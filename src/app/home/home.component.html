@@ -1,0 +1,25 @@
+<div class="container mt-5">
+
+    <div *ngIf="!registerMode" style="text-align: center;">
+        <h1>Stream your videos</h1>
+        <p class="lead">
+            Stream your moments to the world or keep them private—your choice, our platform.
+        </p>
+        <p *ngIf="learnMore" class="lead">
+            On our video streaming platform, you have the flexibility to broadcast your content to a wide audience or keep it under wraps for your eyes only. Whether you're aiming to engage with a community of viewers or storing personal memories, our site offers a seamless experience. From live streams that connect you instantly with viewers around the globe to private uploads that serve as your digital archive, we provide all the tools you need. Dive into sharing your moments and creations or safeguard them in your private collection—either way, you're in control.
+        </p>
+        <div class="text-center">
+            <button class="btn btn-primary btn-lg me-2" (click)="registerToggle()">Register</button>
+            <button class="btn btn-info btn-lg" (click)="learnMore=true" >Learn more</button>
+        </div>
+    </div>
+
+    <div *ngIf="registerMode" class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <app-register (cancelRegister)="registerToggle()"></app-register>
+            </div>
+        </div>
+    </div>
+
+</div>
