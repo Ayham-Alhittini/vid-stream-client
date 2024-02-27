@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
       if (!control.value) 
         return null;
 
-      const strongPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      const strongPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
       const valid = strongPattern.test(control.value);
       return valid ? null : {weakPassword : true};
     };

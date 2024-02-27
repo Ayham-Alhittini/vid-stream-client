@@ -2,6 +2,7 @@ FROM node:16-alpine3.11 as angular
 
 WORKDIR /app
 
+# Copy dependency files first to leverage Docker cache, speeding up subsequent builds unless these files change.
 COPY package*.json ./
 
 RUN npm ci --legacy-peer-deps

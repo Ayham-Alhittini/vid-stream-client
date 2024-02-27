@@ -17,6 +17,9 @@ import { JwtInterceptor } from './interceptor/jwt.interceptor';
 import { LoadingInterceptor } from './interceptor/loading.interceptor';
 import { TextInputComponent } from './forms/text-input/text-input.component';
 import { DatePickerComponent } from './forms/date-picker/date-picker.component';
+import { StreamingHubComponent } from './streaming-hub/streaming-hub.component';
+import { VideoCardComponent } from './video-card/video-card.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { DatePickerComponent } from './forms/date-picker/date-picker.component';
     NotFoundComponent,
     ServerErrorComponent,
     TextInputComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    StreamingHubComponent,
+    VideoCardComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,

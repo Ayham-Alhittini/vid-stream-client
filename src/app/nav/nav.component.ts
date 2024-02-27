@@ -12,11 +12,11 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavComponent implements OnInit, OnDestroy {
 
-  constructor(public accountService : AuthService, private router : Router, private toastr : ToastrService) { }
+  constructor(public authService : AuthService, private router : Router, private toastr : ToastrService) { }
   userSub : Subscription;
 
   ngOnInit(): void {
-    this.userSub = this.accountService.loadedUser.subscribe({
+    this.userSub = this.authService.loadedUser.subscribe({
       error : res => {
         console.log(res);
       }
@@ -26,8 +26,8 @@ export class NavComponent implements OnInit, OnDestroy {
 
   login(authForm : NgForm)
   {
-    this.accountService.login(authForm.value).subscribe({
-      next : () => this.router.navigateByUrl("/"),
+    this.authService.login(authForm.value).subscribe({
+      next : () => this.router.navigateByUrl("/streaming-hub"),
       error : errorMsg => {
         console.log(errorMsg);
         for(const element of errorMsg) {
@@ -39,7 +39,7 @@ export class NavComponent implements OnInit, OnDestroy {
 
   logout()
   {
-    this.accountService.logout();
+    this.authService.logout();
     this.router.navigateByUrl("/");
   }
   

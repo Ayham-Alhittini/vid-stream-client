@@ -7,7 +7,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <ng-container *ngIf="(accountService.loadedUser | async)">
+          <ng-container *ngIf="(authService.loadedUser | async)">
 
             <li class="nav-item">
               <a class="nav-link" aria-current="page" routerLinkActive="active"  routerLink="/members">Upload video</a>
@@ -16,7 +16,7 @@
           </ng-container>
         </ul>
 
-        <div class="dropdown" dropdown style="cursor: pointer;"  *ngIf="(accountService.loadedUser | async) as user">
+        <div class="dropdown" dropdown style="cursor: pointer;"  *ngIf="(authService.loadedUser | async) as user">
           <img src="{{user.photoUrl || './assets/user.png'}}" alt="user photo" class="myImage me-2">
           <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>Welcome {{user.knownAs}}</a>
           <div class="dropdown-menu mt-3" *dropdownMenu>
@@ -26,7 +26,7 @@
         </div>
           
 
-        <form *ngIf="!(accountService.loadedUser | async)" class="d-flex" (ngSubmit)="login(authForm)" #authForm="ngForm" autocomplete="off">
+        <form *ngIf="!(authService.loadedUser | async)" class="d-flex" (ngSubmit)="login(authForm)" #authForm="ngForm" autocomplete="off">
           <input class="form-control me-2" type="text" placeholder="Username or email..." aria-label="text" required ngModel name="loginProvider">
           <input class="form-control me-2" type="password" placeholder="Password..." aria-label="password" required ngModel name="password">
           <button class="btn btn-success" type="submit">Login</button>
