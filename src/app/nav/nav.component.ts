@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { AccountService } from '../services/account.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,7 +12,7 @@ import { AccountService } from '../services/account.service';
 })
 export class NavComponent implements OnInit, OnDestroy {
 
-  constructor(public accountService : AccountService, private router : Router, private toastr : ToastrService) { }
+  constructor(public accountService : AuthService, private router : Router, private toastr : ToastrService) { }
   userSub : Subscription;
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class NavComponent implements OnInit, OnDestroy {
   login(authForm : NgForm)
   {
     this.accountService.login(authForm.value).subscribe({
-      next : () => this.router.navigateByUrl("/members"),
+      next : () => this.router.navigateByUrl("/"),
       error : errorMsg => {
         console.log(errorMsg);
         for(const element of errorMsg) {

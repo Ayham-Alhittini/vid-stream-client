@@ -11,16 +11,16 @@
         Please enter a {{label}}
     </div>
 
-    <div class="invalid-feedback" *ngIf="ngControl.hasError('minlength')">
-        {{label}} must be at least {{ngControl.hasError('minlength').required}}
-    </div>
-
-    <div class="invalid-feedback" *ngIf="ngControl.hasError('maxlength')">
-        {{label}} must be at most {{ngControl.hasError('maxlength').required}}
-    </div>
 
     <div class="invalid-feedback" *ngIf="ngControl.hasError('notMatching')">
-        passwords are not matching
+        Passwords are not matching.
     </div>
 
+    <div class="invalid-feedback" *ngIf="ngControl.hasError('invalidUsername')">
+        You allowed to use alphanumeric character  numbers and hyphens.
+    </div>
+
+    <div class="invalid-feedback" *ngIf="ngControl.hasError('weakPassword')">
+        Include at least one lowercase letter, one uppercase letter, one digit, and one special character, and at least 8 characters longs.
+    </div>
 </div>

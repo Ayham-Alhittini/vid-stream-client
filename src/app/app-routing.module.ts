@@ -4,6 +4,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { IsGuestGuard } from './guards/is-guest.guard';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 
 const routes: Routes = [
   {path : '', component : HomeComponent, canActivate: [IsGuestGuard]},
@@ -15,6 +16,7 @@ const routes: Routes = [
       
     ]
   },
+  {path: 'server-error', component: ServerErrorComponent},
   {path : '**', component : NotFoundComponent},
 ];
 

@@ -22,24 +22,14 @@ export class ErrorInterceptor implements HttpInterceptor {
           switch(error.status)
           {
             case 400 :
-              if (error.error.errors) {
-                const modelStateErrors = [];
-                for (const key in error.error.errors) {
-                  if (error.error.errors[key]) {
-                    modelStateErrors.push(error.error.errors[key]);
-                  }
-                }
-                throw modelStateErrors.flat();
-              } else {
-                this.toastr.error(error.error, error.status.toString());
-              }
+              this.toastr.error("Bad Request", "See logs for more detials");
+              console.log(error);
               break;
               case 401 :
                 this.toastr.error("Unauthorised", error.status.toString());
                 break;
               case 404 :
                 this.toastr.error(error.error, error.status.toString());
-                this.router.navigateByUrl("/members");
                 break;
               case 500 :
                 const navigationExtras : NavigationExtras = {state : {error : error.error}};

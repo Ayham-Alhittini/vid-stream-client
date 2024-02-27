@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AccountService } from '../services/account.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -13,32 +13,55 @@ export class RegisterComponent implements OnInit {
 
   @Output() cancelRegister = new EventEmitter<void>();
   registerForm: FormGroup;
-  maxDate = new Date();
 
-  constructor(private accountService : AccountService, private toastr : ToastrService, private fb: FormBuilder,
+  constructor(private accountService : AuthService, private toastr : ToastrService, private fb: FormBuilder,
     private router : Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
-    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
 
   initializeForm() {
     this.registerForm = this.fb.group({
-      username : ['', Validators.required],
+      userName : ['', [
+        Validators.required,
+        this.validateUserName()
+      ]],
       knownAs : ['', Validators.required],
       email : ['', [Validators.required, Validators.email]],
       password : ['', 
-        [Validators.required, Validators.minLength(4), Validators.maxLength(8)]
+        [Validators.required, Validators.minLength(8), Validators.maxLength(20), this.validatePasswordStrength()]
       ],
       confirmPassword : ['', [Validators.required, this.matchValues()]]
     });
-    this.registerForm?.controls['password'].valueChanges.subscribe({
+
+    // this.registerForm?.controls['password'].valueChanges.subscribe({
+    //   next : () => {
+    //     this.registerForm?.controls['confirmPassword'].updateValueAndValidity();
+    //   }
+    // });
+  }
+
+  register() {
+    
+    console.log(this.registerForm.value);
+    
+    this.accountService.register(this.registerForm.value).subscribe({
       next : () => {
-        this.registerForm?.controls['confirmPassword'].updateValueAndValidity();
+        this.router.navigateByUrl("/");
+      },
+      error : error => {
+        console.log(error);
       }
     });
   }
+
+  onCancel() {
+    this.cancelRegister.emit();
+  }
+
+
+  // Validations
 
   matchValues() : ValidatorFn {
     return (control: AbstractControl) => {
@@ -46,30 +69,29 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  register() {
-    const dob = this.getDateOnly(this.registerForm.controls['dateOfBirth'].value);
 
-    const values = {...this.registerForm.value, dateOfBirth: dob};
-    
-    this.accountService.register(values).subscribe({
-      next : () => {
-        this.router.navigateByUrl("/members");
-      },
-      error : error => {
-        this.toastr.error("Error Occure");
-        console.log(error);
-      }
-    });
-  }
-  onCancel() {
-    this.cancelRegister.emit();
-  }
-  private getDateOnly(dob: string) : string {
-    if (!dob) return '';
+  validateUserName(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      
+      if (!control.value) 
+        return null;
 
-    let theDob = new Date(dob);
-
-    return new Date(theDob.setMinutes(theDob.getMinutes() - theDob.getTimezoneOffset()))
-      .toISOString().slice(0, 10);
+      const pattern = /^(?:\d+[a-zA-Z\d]|(?:[a-zA-Z\d]|-(?=[a-zA-Z\d])){1,38})$/;
+      const valid = pattern.test(control.value);
+      return valid ? null : {invalidUsername : true};
+    };
   }
+
+  validatePasswordStrength(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+
+      if (!control.value) 
+        return null;
+
+      const strongPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      const valid = strongPattern.test(control.value);
+      return valid ? null : {weakPassword : true};
+    };
+  }
+
 }
