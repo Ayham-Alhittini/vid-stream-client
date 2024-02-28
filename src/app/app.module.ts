@@ -19,7 +19,9 @@ import { TextInputComponent } from './forms/text-input/text-input.component';
 import { DatePickerComponent } from './forms/date-picker/date-picker.component';
 import { StreamingHubComponent } from './streaming-hub/streaming-hub.component';
 import { VideoCardComponent } from './video-card/video-card.component';
-import { VideoComponent } from './video/video.component';
+import { PlyrVideoComponent } from './plyr-video/plyr-video.component';
+import { MyStreamsComponent } from './my-streams/my-streams.component';
+import { VideoCardListItemComponent } from './video-card-list-item/video-card-list-item.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { VideoComponent } from './video/video.component';
     DatePickerComponent,
     StreamingHubComponent,
     VideoCardComponent,
-    VideoComponent
+    PlyrVideoComponent,
+    MyStreamsComponent,
+    VideoCardListItemComponent
   ],
   imports: [
     BrowserModule,

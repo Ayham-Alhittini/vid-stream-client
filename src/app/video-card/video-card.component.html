@@ -1,20 +1,15 @@
-<div class="video-card" routerLink="/watch">
-  <div class="thumbnail" style="background-image: url('{{video.thumbnailImageUrl}}');">
-    <div class="duration">
-      13:58
-    </div>
+
+<div class="video-card" (click)="clickVideo()" role="button" aria-label="Play video">
+  <div class="thumbnail" [style.background-image]="'url(' + video.thumbnailImageUrl + ')'">
+    <video class="video-preview" [src]="video.videoUrl" muted loop></video>
+    <img src="{{video.thumbnailImageUrl}}" alt="Thumbnail" class="thumbnail-img">
+    <div class="duration">{{ '10:04' }}</div>
   </div>
   <div class="video-details">
-    <div class="video-title">
-      {{video.originalFileName}}
-    </div>
+    <h3 class="video-title">{{ video.originalFileName }}</h3>
     <div class="video-meta">
-      <div class="video-channel">
-        {{video.ownerUserName}}
-      </div>
-      <div class="video-stats">
-        694K views • Streamed 9 months ago
-      </div>
+      <p class="video-channel">{{ video.ownerUserName }}</p>
+      <p class="video-stats">{{ '20K' }} views • Streamed {{ '9 months ago.' }}</p>
     </div>
   </div>
 </div>

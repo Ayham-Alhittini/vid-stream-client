@@ -6,13 +6,13 @@ import {
 } from '@angular/router';
 import { Observable, of, take } from 'rxjs';
 import { User } from '../Models/user';
-import { AccountService } from '../_services/account.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoadUserResolver implements Resolve<User> {
-  constructor(private accountService: AccountService){}
+  constructor(private accountService: AuthService){}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> {
     return this.accountService.loadedUser.pipe(take(1));
   }

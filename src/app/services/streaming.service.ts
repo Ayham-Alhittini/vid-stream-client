@@ -12,7 +12,12 @@ export class StreamingService {
   private baseUrl = "http://localhost:8083/api/streaming";
 
   getAllVideos() {
-    return this.http.get<Video[]>(this.baseUrl);
+    return this.http.get<Video[]>(this.baseUrl + "/get-all-videos");
   }
+
+  getVideoById(videoId: number) {
+    return this.http.get<Video>(this.baseUrl + "/get-video/" + videoId);
+  }
+
 
 }

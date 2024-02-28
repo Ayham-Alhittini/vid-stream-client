@@ -6,7 +6,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { IsGuestGuard } from './guards/is-guest.guard';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { StreamingHubComponent } from './streaming-hub/streaming-hub.component';
-import { VideoComponent } from './video/video.component';
+import { PlyrVideoComponent } from './plyr-video/plyr-video.component';
+import { VideoResolver } from './resolvers/video.resolver';
+import { MyStreamsComponent } from './my-streams/my-streams.component';
 
 const routes: Routes = [
   {path : '', component : HomeComponent, canActivate: [IsGuestGuard]},
@@ -16,7 +18,8 @@ const routes: Routes = [
     canActivate : [AuthGuard],
     children : [
       {path: 'streaming-hub', component: StreamingHubComponent},
-      {path: 'watch', component: VideoComponent}
+      {path: 'watch', component: PlyrVideoComponent, resolve: { video: VideoResolver }},
+      {path: 'my-streams', component: MyStreamsComponent}
     ]
   },
   {path: 'server-error', component: ServerErrorComponent},
