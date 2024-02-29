@@ -9,7 +9,7 @@ export class StreamingService {
 
   constructor(private http: HttpClient) { }
 
-  private baseUrl = "http://localhost:8083/api/streaming";
+  private baseUrl = "http://host.docker.internal:9083/api/streaming";
 
   getAllVideos() {
     return this.http.get<Video[]>(this.baseUrl + "/get-all-videos");

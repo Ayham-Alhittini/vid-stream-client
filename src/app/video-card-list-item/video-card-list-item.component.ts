@@ -1,5 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Video } from '../Models/video';
+import { UploadService } from '../services/upload.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-video-card-list-item',
@@ -8,4 +11,25 @@ import { Video } from '../Models/video';
 })
 export class VideoCardListItemComponent {
   @Input() video: Video;
+  @Output() videoDeleted: EventEmitter<number> = new EventEmitter<number>();
+
+  constructor(public uploadService: UploadService, private toaster: ToastrService, private router: Router){}
+
+  deleteVideo(videoId: number) {
+    const response = confirm("Are you sure?");
+
+    if (response) {
+      this.videoDeleted.emit(videoId);
+      this.uploadService.deleteVideo(videoId).subscribe({
+      next: () => {
+        this.toaster.success("Video deleted");
+      }
+    })
+    }
+  }
+
+  openInNewTab(videoId: number): void {
+    this.router.navigateByUrl("/watch?v=" + videoId);
+  }
+
 }

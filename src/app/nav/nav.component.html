@@ -10,8 +10,8 @@
           <ng-container *ngIf="(authService.loadedUser | async)">
 
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLinkActive="active"  [routerLink]="['/my-streams']" [queryParams]="{upload: true}">
-                <img src="./assets/upload.svg" alt="Streaming App Icon" class="me-2" style="height: 40px;">
+              <a class="nav-link" aria-current="page" routerLinkActive="active"  (click)="goToUpload()">
+                <img src="./assets/upload.svg" alt="Streaming App Icon" class="me-2" style="height: 40px; cursor: pointer;">
               </a>
             </li>
 
@@ -19,7 +19,6 @@
         </ul>
 
         <div class="dropdown" dropdown style="cursor: pointer;"  *ngIf="(authService.loadedUser | async) as user">
-          <img src="{{user.photoUrl || './assets/user.png'}}" alt="user photo" class="myImage me-2">
           <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>Welcome {{user.knownAs}}</a>
           <div class="dropdown-menu mt-3" *dropdownMenu>
             <a class="dropdown-item" routerLink="profile">Edit Profile</a>

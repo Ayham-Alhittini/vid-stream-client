@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { StreamingService } from '../services/streaming.service';
 import { Router } from '@angular/router';
+import { UploadService } from '../services/upload.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-my-streams',
@@ -9,12 +11,44 @@ import { Router } from '@angular/router';
 })
 export class MyStreamsComponent {
   loading = false;
+  videoReset = null;
+  imageReset = null;
   videos = [];
 
-  constructor(private streamingService: StreamingService, private router: Router){}
+  model: any = {
+    originalFilename: '',
+    videoDescription: '',
+    videoFile: null,
+    thumbnailImageFile: null,
+    videoDuration: 0
+  };
+
+
+  constructor(private streamingService: StreamingService,
+      private router: Router,
+      private uploadService: UploadService,
+      private toaster: ToastrService){}
 
   ngOnInit(): void {
-      this.loading = true;
+      this.loadMyStreams();
+  }
+
+  videoDeleted(videoId: number) {
+    this.videos = this.videos.filter(v => v.id != videoId);
+  }
+
+  newVideoAdded(event: any) {
+    this.loadMyStreams();
+  }
+
+
+  goToVideo(videoId: number) {
+    this.router.navigateByUrl("/watch?v=" + videoId);
+  }
+
+
+  private loadMyStreams() {
+    this.loading = true;
       this.streamingService.getAllVideos().subscribe({
         next: res => {
           this.videos = res;
@@ -24,12 +58,6 @@ export class MyStreamsComponent {
       })
   }
 
-  onDeleteClick(videoId: number) {
-    console.log(videoId);
-  }
 
-  goToVideo(videoId: number) {
-    this.router.navigateByUrl("/watch?v=" + videoId);
-  }
 
 }

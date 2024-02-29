@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { UploadService } from '../services/upload.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,7 +13,13 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavComponent implements OnInit, OnDestroy {
 
-  constructor(public authService : AuthService, private router : Router, private toastr : ToastrService) { }
+  constructor(
+      public authService : AuthService,
+      private router : Router,
+      private toastr : ToastrService,
+      private uploadService: UploadService
+  ) { }
+
   userSub : Subscription;
 
   ngOnInit(): void {
@@ -35,6 +42,11 @@ export class NavComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+
+
+  goToUpload() {
+    this.router.navigateByUrl("/my-streams?upload=true");
   }
 
   logout()

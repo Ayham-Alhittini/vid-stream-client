@@ -3,13 +3,13 @@
   <div class="thumbnail" [style.background-image]="'url(' + video.thumbnailImageUrl + ')'">
     <video class="video-preview" [src]="video.videoUrl" muted loop></video>
     <img src="{{video.thumbnailImageUrl}}" alt="Thumbnail" class="thumbnail-img">
-    <div class="duration">{{ '10:04' }}</div>
+    <div class="duration">{{ uploadService.getTimeFormat(video.videoDuration) }}</div>
   </div>
   <div class="video-details">
     <h3 class="video-title">{{ video.originalFileName }}</h3>
     <div class="video-meta">
       <p class="video-channel">{{ video.ownerUserName }}</p>
-      <p class="video-stats">{{ '20K' }} views • Streamed {{ '9 months ago.' }}</p>
+      <p class="video-stats">{{ '20K' }} views • Streamed {{ video.creationDateTime + 'Z' | timeago }}</p>
     </div>
   </div>
 </div>

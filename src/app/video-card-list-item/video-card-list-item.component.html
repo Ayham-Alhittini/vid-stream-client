@@ -3,21 +3,21 @@
         <div class="thumbnail" [style.background-image]="'url(' + video.thumbnailImageUrl + ')'">
           <video class="video-preview" [src]="video.videoUrl" muted loop></video>
           <img src="{{video.thumbnailImageUrl}}" alt="Thumbnail" class="thumbnail-img">
-          <div class="duration">{{ '10:04' }}</div>
+          <div class="duration">{{ uploadService.getTimeFormat(video.videoDuration) }}</div>
         </div>
     </div>
     <div class="video-details">
         <h3 class="video-title">{{ video.originalFileName }}</h3>
         <div class="video-meta mb-4 text-muted">
-            <p class="video-stats">{{ '20K' }} views • Streamed {{ '9 months ago.' }}</p>
+            <p class="video-stats">{{ '20K' }} views • Streamed {{ video.creationDateTime + 'Z' | timeago }}</p>
             <p class="video-channel">{{ video.ownerUserName }}</p>
         </div>
         <p class="video-desc text-muted">
-            this is video description
+            {{!video.videoDescription ? 'No description' : video.videoDescription.substring(0, 40) + '....'}}
         </p>
     </div>
     <div class="actions">
-        <button class="watch" [routerLink]="['/watch']" [queryParams]="{v: video.id}"><i class="fa-solid fa-play me-1"></i>watch</button>
-        <button class="delete"><i class="fa-solid fa-trash me-1"></i>delete</button>
+        <button class="watch" (click)="openInNewTab(video.id)"><i class="fa-solid fa-play me-1"></i> Watch</button>
+        <button class="delete" (click)="deleteVideo(video.id)"><i class="fa-solid fa-trash me-1"></i>delete</button>
     </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Video } from '../Models/video';
 import { Router } from '@angular/router';
+import { UploadService } from '../services/upload.service';
 
 @Component({
   selector: 'app-video-card',
@@ -11,7 +12,7 @@ export class VideoCardComponent {
   @Input() video: Video;
   @ViewChild('videoPreview') videoPreview: ElementRef<HTMLVideoElement>;
 
-  constructor(private router: Router){}
+  constructor(private router: Router, public uploadService: UploadService){}
 
   clickVideo() {
     this.router.navigateByUrl("watch?v=" + this.video.id);

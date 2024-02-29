@@ -18,7 +18,7 @@ export class IsGuestGuard implements CanActivate {
             return true;
           }
           //redirect
-          this.router.navigateByUrl('/members');
+          this.router.navigateByUrl('/streaming-hub');
           return false;
         })
       );

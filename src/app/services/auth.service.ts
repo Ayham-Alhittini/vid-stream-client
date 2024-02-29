@@ -9,8 +9,7 @@ export class AuthService {
 
   constructor(private http : HttpClient) { }
 
-  private baseUrl = "http://host.docker.internal:8081/api/auth";
-  // private baseUrl = "http://localhost:8081/api/auth";
+  private baseUrl = "http://host.docker.internal:9081/api/auth";
 
   loadedUser = new BehaviorSubject<User>(null);
 
