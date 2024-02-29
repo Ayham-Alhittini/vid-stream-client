@@ -6,8 +6,9 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-        <ul class="navbar-nav  ms-auto mb-2 me-3 mb-md-0">
-          <ng-container *ngIf="(authService.loadedUser | async)">
+      <app-nav-search class="ms-auto"></app-nav-search>
+      <ng-container *ngIf="(authService.loadedUser | async)">
+          <ul class="navbar-nav ms-auto mb-2 me-3 mb-md-0">
 
             <li class="nav-item">
               <a class="nav-link" aria-current="page" routerLinkActive="active"  (click)="goToUpload()">
@@ -15,8 +16,8 @@
               </a>
             </li>
 
-          </ng-container>
-        </ul>
+          </ul>
+      </ng-container>
 
         <div class="dropdown" dropdown style="cursor: pointer;"  *ngIf="(authService.loadedUser | async) as user">
           <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>Welcome {{user.knownAs}}</a>

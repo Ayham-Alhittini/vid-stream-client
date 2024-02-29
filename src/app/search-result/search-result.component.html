@@ -1,0 +1,9 @@
+<span style="display: block; margin-top: 110px;"></span>
+
+<div class="container">
+    <app-video-card-list-item 
+        *ngFor="let video of videos"
+        [routerLink]="['/watch']" [queryParams]="{v: video.id}"
+        [video]="video">
+    </app-video-card-list-item>
+</div>

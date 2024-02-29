@@ -26,6 +26,8 @@ import { VideoUploadComponent } from './video-upload/video-upload.component';
 import { EditVideoComponent } from './edit-video/edit-video.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { NavSearchComponent } from './nav-search/nav-search.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     VideoUploadComponent,
     EditVideoComponent,
     ProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    NavSearchComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,

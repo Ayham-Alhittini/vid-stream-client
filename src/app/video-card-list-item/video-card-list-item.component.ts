@@ -13,6 +13,8 @@ export class VideoCardListItemComponent {
   @Input() video: Video;
   @Output() videoDeleted: EventEmitter<number> = new EventEmitter<number>();
 
+  @Input() myVideo: boolean = false;
+
   constructor(public uploadService: UploadService, private toaster: ToastrService, private router: Router){}
 
   deleteVideo(videoId: number) {

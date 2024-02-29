@@ -10,6 +10,7 @@ import { PlyrVideoComponent } from './plyr-video/plyr-video.component';
 import { VideoResolver } from './resolvers/video.resolver';
 import { MyStreamsComponent } from './my-streams/my-streams.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 const routes: Routes = [
   {path : '', component : HomeComponent, canActivate: [IsGuestGuard]},
@@ -21,7 +22,8 @@ const routes: Routes = [
       {path: 'streaming-hub', component: StreamingHubComponent},
       {path: 'watch', component: PlyrVideoComponent, resolve: { video: VideoResolver }},
       {path: 'my-streams', component: MyStreamsComponent},
-      {path: 'my-profile', component: ProfileComponent}
+      {path: 'my-profile', component: ProfileComponent},
+      {path: 'results', component: SearchResultComponent},
     ]
   },
   {path: 'server-error', component: ServerErrorComponent},

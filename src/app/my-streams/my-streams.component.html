@@ -9,6 +9,7 @@
         *ngFor="let video of videos"
          [video]="video"
          (click)="onClick(video)"
+         [myVideo]="true"
          (videoDeleted)="videoDeleted($event)">
     </app-video-card-list-item>
 
