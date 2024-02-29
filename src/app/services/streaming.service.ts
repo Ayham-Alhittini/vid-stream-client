@@ -25,4 +25,9 @@ export class StreamingService {
   }
 
 
+  incrementViews(videoId: number) {
+    return this.http.put(this.baseUrl + '/increment-views/' + videoId, null);
+  }
+
+
 }

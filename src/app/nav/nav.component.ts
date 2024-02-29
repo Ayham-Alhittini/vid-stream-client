@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { UploadService } from '../services/upload.service';
 
 @Component({
   selector: 'app-nav',
@@ -16,9 +15,7 @@ export class NavComponent implements OnInit, OnDestroy {
   constructor(
       public authService : AuthService,
       private router : Router,
-      private toastr : ToastrService,
-      private uploadService: UploadService
-  ) { }
+      private toastr : ToastrService  ) { }
 
   userSub : Subscription;
 

@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
@@ -9,6 +9,7 @@ import { StreamingHubComponent } from './streaming-hub/streaming-hub.component';
 import { PlyrVideoComponent } from './plyr-video/plyr-video.component';
 import { VideoResolver } from './resolvers/video.resolver';
 import { MyStreamsComponent } from './my-streams/my-streams.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path : '', component : HomeComponent, canActivate: [IsGuestGuard]},
@@ -19,7 +20,8 @@ const routes: Routes = [
     children : [
       {path: 'streaming-hub', component: StreamingHubComponent},
       {path: 'watch', component: PlyrVideoComponent, resolve: { video: VideoResolver }},
-      {path: 'my-streams', component: MyStreamsComponent}
+      {path: 'my-streams', component: MyStreamsComponent},
+      {path: 'my-profile', component: ProfileComponent}
     ]
   },
   {path: 'server-error', component: ServerErrorComponent},

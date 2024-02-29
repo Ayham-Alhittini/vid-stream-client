@@ -24,6 +24,8 @@ import { MyStreamsComponent } from './my-streams/my-streams.component';
 import { VideoCardListItemComponent } from './video-card-list-item/video-card-list-item.component';
 import { VideoUploadComponent } from './video-upload/video-upload.component';
 import { EditVideoComponent } from './edit-video/edit-video.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { EditVideoComponent } from './edit-video/edit-video.component';
     MyStreamsComponent,
     VideoCardListItemComponent,
     VideoUploadComponent,
-    EditVideoComponent
+    EditVideoComponent,
+    ProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

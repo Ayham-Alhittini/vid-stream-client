@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { ElementRef, EventEmitter, Injectable } from '@angular/core';
+import { ElementRef, Injectable } from '@angular/core';
 import { Video } from '../Models/video';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class UploadService {
   // private baseUrl = "http://localhost:8082/api";
   private baseUrl = "http://host.docker.internal:9082/api";
 
-  toEditVideo = new EventEmitter<Video>();
+  toEditVideo = new BehaviorSubject<Video>(null);
+
 
   uploadVideo(model: any) {
     return this.http.post<Video>(this.baseUrl + "/upload", model);

@@ -9,7 +9,7 @@
     <h3 class="video-title">{{ video.originalFileName }}</h3>
     <div class="video-meta">
       <p class="video-channel">{{ video.ownerUserName }}</p>
-      <p class="video-stats">{{ '20K' }} views • Streamed {{ video.creationDateTime + 'Z' | timeago }}</p>
+      <p class="video-stats">{{ video.totalViews }} views • Streamed {{ video.creationDateTime + 'Z' | timeago }}</p>
     </div>
   </div>
 </div>

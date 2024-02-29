@@ -7,5 +7,6 @@ export class Video {
     public videoDuration: number;
     public videoDescription: string;
     public creationDateTime: Date;
+    public totalViews: number;
 }
 

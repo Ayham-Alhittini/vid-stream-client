@@ -25,6 +25,15 @@ export class AuthService {
   }
 
 
+  updateProfile(knownAs: string) {
+    return this.http.put(this.baseUrl + "/update-profile?knownAs=" + knownAs, null);
+  }
+
+  changePassword(model: any) {
+    return this.http.put(this.baseUrl + '/change-password', model);
+  }
+
+
   autoLogin()
   {
     const user = localStorage.getItem('user');
@@ -53,6 +62,9 @@ export class AuthService {
 
   setCurrentUser(user : User) {
     this.loadedUser.next(user);
+    localStorage.removeItem('user');
     localStorage.setItem('user', JSON.stringify(user));
   }
+
+
 }

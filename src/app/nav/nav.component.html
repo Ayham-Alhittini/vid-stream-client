@@ -21,7 +21,7 @@
         <div class="dropdown" dropdown style="cursor: pointer;"  *ngIf="(authService.loadedUser | async) as user">
           <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>Welcome {{user.knownAs}}</a>
           <div class="dropdown-menu mt-3" *dropdownMenu>
-            <a class="dropdown-item" routerLink="profile">Edit Profile</a>
+            <a class="dropdown-item" routerLink="my-profile">Edit Profile</a>
             <a class="dropdown-item" routerLink="my-streams">My Streams</a>
             <a class="dropdown-item" (click)="logout()">Logout</a>
           </div>

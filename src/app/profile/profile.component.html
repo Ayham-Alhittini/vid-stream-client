@@ -1,0 +1,41 @@
+<span class="d-block" style="margin-top: 110px;"></span>
+
+<form class="container" autocomplete="off">
+    <h2 class="text-center text-primary">Profile Page</h2>
+    <hr>
+    
+    <div class="mb-3">
+        <input 
+            type="email"
+            value="{{user.email}}"
+            disabled
+            class="form-control">
+    </div>
+    
+    <div class="mb-3">
+        <input 
+            type="text"
+            value="{{user.userName}}"
+            disabled
+            class="form-control">
+    </div>
+    
+    <div class="mb-3">
+        <input 
+            type="text"
+            placeholder="Known as"
+            name="knownAs"
+            [(ngModel)]="knownAs"
+            class="form-control">
+
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-success me-2"  (click)="updateProfile()" [disabled]="knownAs === ''">Update</button>
+    </div>
+</form>
+
+<hr style="margin-top: 120px;">
+
+
+<app-change-password></app-change-password>

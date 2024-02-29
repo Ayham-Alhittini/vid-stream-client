@@ -1,18 +1,20 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UploadService } from '../services/upload.service';
 import { Video } from '../Models/video';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit-video',
   templateUrl: './edit-video.component.html',
   styleUrls: ['./edit-video.component.css']
 })
-export class EditVideoComponent implements AfterViewInit {
+export class EditVideoComponent implements AfterViewInit, OnDestroy{
 
   video: Video;
 
+  editVideoSubscribtion: Subscription;
   @ViewChild('videoPreview') videoPreview: ElementRef;
   @ViewChild('imagePreview') imagePreview: ElementRef;
   @ViewChild('videoModel') videoModel: ElementRef;
@@ -39,12 +41,16 @@ export class EditVideoComponent implements AfterViewInit {
 
 
   ngAfterViewInit(): void {
-    this.uploadService.toEditVideo.subscribe({
+    this.editVideoSubscribtion = this.uploadService.toEditVideo.subscribe({
       next: video => {
         this.initializeModel(video);
         this.openModal();
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.editVideoSubscribtion.unsubscribe();
   }
 
 

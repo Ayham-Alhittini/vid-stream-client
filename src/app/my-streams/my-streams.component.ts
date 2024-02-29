@@ -48,7 +48,7 @@ export class MyStreamsComponent {
   }
 
   onClick(video: Video) {
-    this.uploadService.toEditVideo.emit(video);
+    this.uploadService.toEditVideo.next(video);
   }
 
 
