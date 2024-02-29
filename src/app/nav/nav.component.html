@@ -6,8 +6,8 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <app-nav-search class="ms-auto"></app-nav-search>
       <ng-container *ngIf="(authService.loadedUser | async)">
+        <app-nav-search class="ms-auto"></app-nav-search>
           <ul class="navbar-nav ms-auto mb-2 me-3 mb-md-0">
 
             <li class="nav-item">
