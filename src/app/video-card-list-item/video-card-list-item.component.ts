@@ -28,6 +28,7 @@ export class VideoCardListItemComponent {
     }
   }
 
+
   openInNewTab(videoId: number): void {
     this.router.navigateByUrl("/watch?v=" + videoId);
   }

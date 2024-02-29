@@ -17,7 +17,7 @@
         </p>
     </div>
     <div class="actions">
-        <button class="watch" (click)="openInNewTab(video.id)"><i class="fa-solid fa-play me-1"></i> Watch</button>
-        <button class="delete" (click)="deleteVideo(video.id)"><i class="fa-solid fa-trash me-1"></i>delete</button>
+        <button class="watch" (click)="$event.stopPropagation(); openInNewTab(video.id)"><i class="fa-solid fa-play me-1"></i> Watch</button>
+        <button class="delete" (click)="$event.stopPropagation(); deleteVideo(video.id)"><i class="fa-solid fa-trash me-1"></i>delete</button>
     </div>
 </div>

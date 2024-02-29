@@ -2,12 +2,17 @@
 
 <div class="container">
     <app-video-upload 
-        (newVideoAdded)="newVideoAdded($event)">
+        (videosUpdated)="videosUpdated($event)">
     </app-video-upload>
 
     <app-video-card-list-item 
         *ngFor="let video of videos"
          [video]="video"
+         (click)="onClick(video)"
          (videoDeleted)="videoDeleted($event)">
     </app-video-card-list-item>
+
+    <app-edit-video
+        (videosUpdated)="videosUpdated($event)">
+    </app-edit-video>
 </div>

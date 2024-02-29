@@ -17,7 +17,7 @@ export class VideoUploadComponent implements AfterViewInit, OnDestroy{
   @ViewChild('imagePreview') imagePreview: ElementRef;
   @ViewChild('videoModel') videoModel: ElementRef;
 
-  @Output('newVideoAdded') newVideoAdded = new EventEmitter<void>();
+  @Output('videosUpdated') videosUpdated = new EventEmitter<void>();
 
   private queryParamsSubscription: Subscription;
   loading = false;
@@ -82,7 +82,7 @@ export class VideoUploadComponent implements AfterViewInit, OnDestroy{
         this.toaster.success("Video uploaded successfully 👍");
         this.loading = false;
         this.closeModal();
-        this.newVideoAdded.emit();
+        this.videosUpdated.emit();
       },
       error: () => {
         this.loading = false;

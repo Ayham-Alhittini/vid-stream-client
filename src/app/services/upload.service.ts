@@ -12,6 +12,7 @@ export class UploadService {
   // private baseUrl = "http://localhost:8082/api";
   private baseUrl = "http://host.docker.internal:9082/api";
 
+  toEditVideo = new EventEmitter<Video>();
 
   uploadVideo(model: any) {
     return this.http.post<Video>(this.baseUrl + "/upload", model);
@@ -21,6 +22,9 @@ export class UploadService {
     return this.http.delete(this.baseUrl + "/delete/" + videoId);
   }
 
+  editVideo(videoId: number, model: any) {
+    return this.http.put<Video>(this.baseUrl + '/edit/' + videoId, model);
+  }
 
   getTimeFormat(timeInSeconds: number): string {
     const hours = Math.floor(timeInSeconds / 3600);

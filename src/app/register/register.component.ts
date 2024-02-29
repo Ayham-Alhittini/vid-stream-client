@@ -35,11 +35,11 @@ export class RegisterComponent implements OnInit {
       confirmPassword : ['', [Validators.required, this.matchValues()]]
     });
 
-    // this.registerForm?.controls['password'].valueChanges.subscribe({
-    //   next : () => {
-    //     this.registerForm?.controls['confirmPassword'].updateValueAndValidity();
-    //   }
-    // });
+    this.registerForm?.controls['password'].valueChanges.subscribe({
+      next : () => {
+        this.registerForm?.controls['confirmPassword'].updateValueAndValidity();
+      }
+    });
   }
 
   register() {
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
     
     this.accountService.register(this.registerForm.value).subscribe({
       next : () => {
-        this.router.navigateByUrl("/");
+        this.router.navigateByUrl("/streaming-hub");
       },
       error : error => {
         console.log(error);

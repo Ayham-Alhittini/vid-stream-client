@@ -1,0 +1,59 @@
+<div class="modal fade" id="videoDetailsModal" #videoModel tabindex="-1" aria-labelledby="videoDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg"> <!-- Added modal-lg for large modal -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="videoDetailsModalLabel">Upload Video</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" [disabled]="loading" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row"> <!-- Added row -->
+
+
+
+                        <div class="col-md-6"> <!-- Half column width for form -->
+                            <div class="mb-3">
+                                <label for="videoTitle" class="form-label">Title</label>
+                                <input type="text" class="form-control" [(ngModel)]="model.originalFilename" name="originalFilename" id="videoTitle" autocomplete="off">
+                            </div>
+                            <div class="mb-3">
+                                <label for="videoDescription" class="form-label">Description</label>
+                                <textarea class="form-control" placeholder="Optional description" [(ngModel)]="model.videoDescription" name="videoDescription" id="videoDescription"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="thumbnailFile" class="form-label">Upload Thumbnail</label>
+                                <input class="form-control" type="file" id="thumbnailFile" (change)="onThumbnailImageFile($event)" [(ngModel)]="imageReset" name="thumbnailFile">
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-6"> <!-- Half column width for previews -->
+                            <div class="mb-3" *ngIf="true">
+                                <label for="videoPreview" class="form-label d-block">Video Preview</label>
+                                <video #videoPreview id="videoPreview" class="mb-3 preview" controls></video>
+                            </div>
+                            <div class="mb-3" *ngIf="true">
+                                <label for="imagePreview" class="form-label d-block">Thumbnail Preview</label>
+                                <img #imagePreview id="imagePreview" class="preview" alt="Thumbnail Preview" src="{{noImageUrl}}">
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" [disabled]="loading" (click)="closeModal()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="submit()" 
+                    [disabled]="loading || !model.originalFilename"
+                    >Save</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>

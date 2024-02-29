@@ -23,6 +23,7 @@ import { PlyrVideoComponent } from './plyr-video/plyr-video.component';
 import { MyStreamsComponent } from './my-streams/my-streams.component';
 import { VideoCardListItemComponent } from './video-card-list-item/video-card-list-item.component';
 import { VideoUploadComponent } from './video-upload/video-upload.component';
+import { EditVideoComponent } from './edit-video/edit-video.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { VideoUploadComponent } from './video-upload/video-upload.component';
     PlyrVideoComponent,
     MyStreamsComponent,
     VideoCardListItemComponent,
-    VideoUploadComponent
+    VideoUploadComponent,
+    EditVideoComponent
   ],
   imports: [
     BrowserModule,

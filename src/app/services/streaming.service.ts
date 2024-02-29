@@ -15,6 +15,11 @@ export class StreamingService {
     return this.http.get<Video[]>(this.baseUrl + "/get-all-videos");
   }
 
+  getMyStreams() {
+    return this.http.get<Video[]>(this.baseUrl + "/get-my-streams");
+  }
+
+
   getVideoById(videoId: number) {
     return this.http.get<Video>(this.baseUrl + "/get-video/" + videoId);
   }

@@ -3,6 +3,7 @@ import { StreamingService } from '../services/streaming.service';
 import { Router } from '@angular/router';
 import { UploadService } from '../services/upload.service';
 import { ToastrService } from 'ngx-toastr';
+import { Video } from '../Models/video';
 
 @Component({
   selector: 'app-my-streams',
@@ -14,7 +15,7 @@ export class MyStreamsComponent {
   videoReset = null;
   imageReset = null;
   videos = [];
-
+  
   model: any = {
     originalFilename: '',
     videoDescription: '',
@@ -37,7 +38,7 @@ export class MyStreamsComponent {
     this.videos = this.videos.filter(v => v.id != videoId);
   }
 
-  newVideoAdded(event: any) {
+  videosUpdated(event: any) {
     this.loadMyStreams();
   }
 
@@ -46,15 +47,18 @@ export class MyStreamsComponent {
     this.router.navigateByUrl("/watch?v=" + videoId);
   }
 
+  onClick(video: Video) {
+    this.uploadService.toEditVideo.emit(video);
+  }
+
 
   private loadMyStreams() {
     this.loading = true;
-      this.streamingService.getAllVideos().subscribe({
+      this.streamingService.getMyStreams().subscribe({
         next: res => {
           this.videos = res;
-          console.log(this.videos);
           this.loading = false;
-        }
+        }, error: () => this.loading = false
       })
   }
 
