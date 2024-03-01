@@ -12,6 +12,8 @@ export class VideoCardComponent {
   @Input() video: Video;
   @ViewChild('videoPreview') videoPreview: ElementRef<HTMLVideoElement>;
 
+  preview = false;
+
   constructor(private router: Router, public uploadService: UploadService){}
 
   clickVideo() {
@@ -20,10 +22,13 @@ export class VideoCardComponent {
 
 
   mouseEnter(): void {
+    this.preview = true;
+    this.videoPreview.nativeElement.muted = true;
     this.videoPreview.nativeElement.play();
   }
 
   mouseLeave(): void {
+    this.preview = false;
     this.videoPreview.nativeElement.pause();
   }
 

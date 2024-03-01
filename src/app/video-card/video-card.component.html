@@ -1,6 +1,6 @@
-
-<div class="video-card" (click)="clickVideo()" role="button" aria-label="Play video">
+<div class="video-card" (mouseover)="mouseEnter()" (mouseleave)="mouseLeave()" (click)="clickVideo()" role="button" aria-label="Play video">
   <div class="thumbnail" [style.background-image]="'url(' + video.thumbnailImageUrl + ')'">
+    <video *ngIf="preview" #videoPreview class="video-preview" [src]="video.videoUrl" muted loop></video>
     <img src="{{video.thumbnailImageUrl}}" alt="Thumbnail" class="thumbnail-img">
     <div class="duration">{{ uploadService.getTimeFormat(video.videoDuration) }}</div>
   </div>

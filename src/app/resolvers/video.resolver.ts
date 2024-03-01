@@ -17,7 +17,6 @@ export class VideoResolver implements Resolve<Video> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Video> {
     const videoId = +route.queryParamMap.get('v');
-    console.log(videoId);
     
     return this.streamingService.getVideoById(videoId);
   }
