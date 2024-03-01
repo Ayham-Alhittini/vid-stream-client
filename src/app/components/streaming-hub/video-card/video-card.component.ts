@@ -23,13 +23,15 @@ export class VideoCardComponent {
 
   mouseEnter(): void {
     this.preview = true;
-    this.videoPreview.nativeElement.muted = true;
-    this.videoPreview.nativeElement.play();
+    if (this.videoPreview) {
+      this.videoPreview.nativeElement.muted = true;
+      this.videoPreview.nativeElement.play();
+    }
   }
 
   mouseLeave(): void {
-    this.preview = false;
     this.videoPreview.nativeElement.pause();
+    this.preview = false;
   }
 
 }
