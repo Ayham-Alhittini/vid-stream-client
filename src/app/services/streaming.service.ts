@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Video } from '../Models/video';
+import { Video } from '../models/video';
 
 @Injectable({
   providedIn: 'root'

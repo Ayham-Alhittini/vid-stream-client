@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
-import { StreamingService } from '../services/streaming.service';
-import { Video } from '../Models/video';
+import { StreamingService } from '../../services/streaming.service';
+import { Video } from '../../models/video';
 import { ActivatedRoute } from '@angular/router';
-import { VideoService } from '../services/video.service';
+import { VideoService } from '../../services/video.service';
 import { Subscription } from 'rxjs';
 
 @Component({

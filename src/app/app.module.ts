@@ -5,29 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './components/nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './components/home/register/register.component';
 import { SharedModule } from './modules/shared.module';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
-import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { NotFoundComponent } from './components/error/not-found/not-found.component';
+import { ServerErrorComponent } from './components/error/server-error/server-error.component';
 import { JwtInterceptor } from './interceptor/jwt.interceptor';
 import { LoadingInterceptor } from './interceptor/loading.interceptor';
-import { TextInputComponent } from './forms/text-input/text-input.component';
-import { DatePickerComponent } from './forms/date-picker/date-picker.component';
-import { StreamingHubComponent } from './streaming-hub/streaming-hub.component';
-import { VideoCardComponent } from './video-card/video-card.component';
-import { PlyrVideoComponent } from './plyr-video/plyr-video.component';
-import { MyStreamsComponent } from './my-streams/my-streams.component';
-import { VideoCardListItemComponent } from './video-card-list-item/video-card-list-item.component';
-import { VideoUploadComponent } from './video-upload/video-upload.component';
-import { EditVideoComponent } from './edit-video/edit-video.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
-import { NavSearchComponent } from './nav-search/nav-search.component';
-import { SearchResultComponent } from './search-result/search-result.component';
+import { TextInputComponent } from './components/text-input/text-input.component';
+import { StreamingHubComponent } from './components/streaming-hub/streaming-hub.component';
+import { VideoCardComponent } from './components/streaming-hub/video-card/video-card.component';
+import { PlyrVideoComponent } from './components/plyr-video/plyr-video.component';
+import { MyStreamsComponent } from './components/my-streams/my-streams.component';
+import { VideoCardListItemComponent } from './components/video-card-list-item/video-card-list-item.component';
+import { VideoUploadComponent } from './components/my-streams/video-upload/video-upload.component';
+import { EditVideoComponent } from './components/my-streams/edit-video/edit-video.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChangePasswordComponent } from './components/profile/change-password/change-password.component';
+import { NavSearchComponent } from './components/nav/nav-search/nav-search.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { SearchResultComponent } from './search-result/search-result.component';
     NotFoundComponent,
     ServerErrorComponent,
     TextInputComponent,
-    DatePickerComponent,
     StreamingHubComponent,
     VideoCardComponent,
     PlyrVideoComponent,

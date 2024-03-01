@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } fr
 import { ActivatedRoute, Router } from '@angular/router';
 import Plyr from 'plyr';
 import { Subscription } from 'rxjs';
-import { Video } from '../Models/video';
-import { StreamingService } from '../services/streaming.service';
+import { Video } from '../../models/video';
+import { StreamingService } from '../../services/streaming.service';
 
 @Component({
   selector: 'app-plyr-video',

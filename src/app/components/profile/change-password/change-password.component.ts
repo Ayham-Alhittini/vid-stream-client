@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-change-password',

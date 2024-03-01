@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './components/error/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { IsGuestGuard } from './guards/is-guest.guard';
-import { ServerErrorComponent } from './errors/server-error/server-error.component';
-import { StreamingHubComponent } from './streaming-hub/streaming-hub.component';
-import { PlyrVideoComponent } from './plyr-video/plyr-video.component';
+import { ServerErrorComponent } from './components/error/server-error/server-error.component';
+import { StreamingHubComponent } from './components/streaming-hub/streaming-hub.component';
+import { PlyrVideoComponent } from './components/plyr-video/plyr-video.component';
 import { VideoResolver } from './resolvers/video.resolver';
-import { MyStreamsComponent } from './my-streams/my-streams.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SearchResultComponent } from './search-result/search-result.component';
+import { MyStreamsComponent } from './components/my-streams/my-streams.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
 
 const routes: Routes = [
   {path : '', component : HomeComponent, canActivate: [IsGuestGuard]},

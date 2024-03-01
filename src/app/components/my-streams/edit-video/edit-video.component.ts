@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { UploadService } from '../services/upload.service';
-import { Video } from '../Models/video';
+import { UploadService } from '../../../services/upload.service';
+import { Video } from '../../../models/video';
 import { Subscription } from 'rxjs';
-import { StreamingService } from '../services/streaming.service';
+import { StreamingService } from '../../../services/streaming.service';
 
 @Component({
   selector: 'app-edit-video',

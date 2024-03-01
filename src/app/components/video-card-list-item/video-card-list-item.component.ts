@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { Video } from '../Models/video';
-import { UploadService } from '../services/upload.service';
+import { Video } from '../../models/video';
+import { UploadService } from '../../services/upload.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 

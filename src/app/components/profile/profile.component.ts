@@ -2,8 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../services/auth.service';
-import { User } from '../Models/user';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user';
 import { take } from 'rxjs';
 
 @Component({

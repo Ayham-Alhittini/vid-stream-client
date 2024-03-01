@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { Video } from '../Models/video';
+import { Video } from '../../../models/video';
 import { Router } from '@angular/router';
-import { UploadService } from '../services/upload.service';
+import { UploadService } from '../../../services/upload.service';
 
 @Component({
   selector: 'app-video-card',

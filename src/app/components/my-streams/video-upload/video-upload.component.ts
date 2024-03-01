@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UploadService } from '../services/upload.service';
+import { UploadService } from '../../../services/upload.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 
