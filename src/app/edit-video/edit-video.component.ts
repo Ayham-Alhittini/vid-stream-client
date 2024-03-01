@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, Renderer2, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UploadService } from '../services/upload.service';
 import { Video } from '../Models/video';
 import { Subscription } from 'rxjs';
+import { StreamingService } from '../services/streaming.service';
 
 @Component({
   selector: 'app-edit-video',
@@ -34,6 +35,8 @@ export class EditVideoComponent implements AfterViewInit, OnDestroy{
 
   constructor(
       private router: Router,
+      private route: ActivatedRoute,
+      private streamingService: StreamingService,
       private uploadService: UploadService,
       private toaster: ToastrService,
       private renderer: Renderer2
@@ -41,10 +44,17 @@ export class EditVideoComponent implements AfterViewInit, OnDestroy{
 
 
   ngAfterViewInit(): void {
-    this.editVideoSubscribtion = this.uploadService.toEditVideo.subscribe({
-      next: video => {
-        this.initializeModel(video);
-        this.openModal();
+
+    this.editVideoSubscribtion = this.route.queryParams.subscribe({
+      next: query => {
+        const videoId = +query['toEditVideo'];
+        if (videoId) {
+
+          this.streamingService.getVideoById(videoId).subscribe(video => {
+            this.initializeModel(video);
+            this.openModal();
+          });
+        }
       }
     })
   }
@@ -71,6 +81,7 @@ export class EditVideoComponent implements AfterViewInit, OnDestroy{
         this.loading = false;
         this.closeModal();
         this.videosUpdated.emit();
+        this.router.navigateByUrl('/my-streams');
       },
       error: () => {
         this.loading = false;
@@ -100,11 +111,13 @@ export class EditVideoComponent implements AfterViewInit, OnDestroy{
 
 
   openModal() {
-    this.renderer.addClass(this.videoModel.nativeElement, 'show');
-    this.renderer.setStyle(this.videoModel.nativeElement, 'display', 'block');
-    this.renderer.setAttribute(this.videoModel.nativeElement, 'aria-hidden', 'false');
-    this.renderer.addClass(document.body, 'modal-open');
-    this.addBackdrop();
+    if (this.video) {
+      this.renderer.addClass(this.videoModel.nativeElement, 'show');
+      this.renderer.setStyle(this.videoModel.nativeElement, 'display', 'block');
+      this.renderer.setAttribute(this.videoModel.nativeElement, 'aria-hidden', 'false');
+      this.renderer.addClass(document.body, 'modal-open');
+      this.addBackdrop();
+    }
   }
 
   closeModal() {

@@ -1,7 +1,6 @@
 <div class="des">
     <div class="video-card" role="button" aria-label="Play video">
         <div class="thumbnail" [style.background-image]="'url(' + video.thumbnailImageUrl + ')'">
-          <video class="video-preview" [src]="video.videoUrl" muted loop></video>
           <img src="{{video.thumbnailImageUrl}}" alt="Thumbnail" class="thumbnail-img">
           <div class="duration">{{ uploadService.getTimeFormat(video.videoDuration) }}</div>
         </div>

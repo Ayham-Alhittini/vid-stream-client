@@ -16,8 +16,6 @@ export class StreamingHubComponent implements OnInit{
       this.streamingService.getAllVideos().subscribe({
         next: res => {
           this.videos = res;
-          console.log(this.videos);
-          
         }
       })
   }
