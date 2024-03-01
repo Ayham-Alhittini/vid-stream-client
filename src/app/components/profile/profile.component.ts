@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
-import { User } from '../../models/user';
+import { User } from '../../model/user';
 import { take } from 'rxjs';
 
 @Component({

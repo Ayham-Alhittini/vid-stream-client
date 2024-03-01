@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { StreamingService } from '../../services/streaming.service';
 import { UploadService } from '../../services/upload.service';
-import { Video } from '../../models/video';
+import { Video } from '../../model/video';
 import { Router } from '@angular/router';
 
 @Component({

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, O
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UploadService } from '../../../services/upload.service';
-import { Video } from '../../../models/video';
+import { Video } from '../../../model/video';
 import { Subscription } from 'rxjs';
 import { StreamingService } from '../../../services/streaming.service';
 

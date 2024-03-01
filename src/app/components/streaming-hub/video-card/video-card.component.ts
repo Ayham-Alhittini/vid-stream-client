@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { Video } from '../../../models/video';
+import { Video } from '../../../model/video';
 import { Router } from '@angular/router';
 import { UploadService } from '../../../services/upload.service';
 

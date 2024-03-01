@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } fr
 import { ActivatedRoute, Router } from '@angular/router';
 import Plyr from 'plyr';
 import { Subscription } from 'rxjs';
-import { Video } from '../../models/video';
+import { Video } from '../../model/video';
 import { StreamingService } from '../../services/streaming.service';
 
 @Component({

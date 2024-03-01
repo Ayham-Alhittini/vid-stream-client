@@ -5,7 +5,7 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { Video } from '../models/video';
+import { Video } from '../model/video';
 import { StreamingService } from '../services/streaming.service';
 
 @Injectable({
