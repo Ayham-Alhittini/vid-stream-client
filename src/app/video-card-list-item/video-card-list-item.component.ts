@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Video } from '../Models/video';
 import { UploadService } from '../services/upload.service';
 import { ToastrService } from 'ngx-toastr';
@@ -11,9 +11,12 @@ import { Router } from '@angular/router';
 })
 export class VideoCardListItemComponent {
   @Input() video: Video;
+  @Input() myVideo: boolean = false;
   @Output() videoDeleted: EventEmitter<number> = new EventEmitter<number>();
 
-  @Input() myVideo: boolean = false;
+
+  preview = false;
+  @ViewChild('videoPreview') videoPreview: ElementRef<HTMLVideoElement>;
 
   constructor(public uploadService: UploadService, private toaster: ToastrService, private router: Router){}
 
@@ -33,6 +36,17 @@ export class VideoCardListItemComponent {
 
   openInNewTab(videoId: number): void {
     this.router.navigateByUrl("/watch?v=" + videoId);
+  }
+
+  mouseEnter(): void {
+    this.preview = true;
+    this.videoPreview.nativeElement.muted = true;
+    this.videoPreview.nativeElement.play();
+  }
+
+  mouseLeave(): void {
+    this.preview = false;
+    this.videoPreview.nativeElement.pause();
   }
 
 }
